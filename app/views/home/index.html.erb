@@ -1,0 +1,19 @@
+
+<%= link_to "Create Post", new_post_path %>
+
+<%  @posts.each do |post| %>
+  <div class="post">
+    <p><%= post.content %></p>
+    <p>@<%= post.user.username %></p>
+  </div>
+<% end %>
+
+
+<style>
+  .post {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+    width: fit-content;
+  }
+</style>

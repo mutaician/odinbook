@@ -1,0 +1,13 @@
+
+<h2>Create Post</h2>
+
+<%= form_with model: @post do |form| %>
+
+    <div class="field">
+        <%= form.label :content %><br>
+        <%= form.text_field :content %>
+    </div>
+    <div class="actions">
+        <%= form.submit %>
+    </div>
+<% end %>
