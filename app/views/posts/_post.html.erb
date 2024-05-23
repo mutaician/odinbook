@@ -1,0 +1,17 @@
+<div class="post">
+    <h4><%= post.content %></h4>
+    <p>@<%= link_to post.user.username, user_path(post.user) %></p>
+    <% if current_user == post.user %>
+        <%= link_to "Edit", edit_post_path(post) %>
+        <%= link_to "Delete", post, data: { confirm: "Are you sure?", turbo_method: :delete } %>
+    <% end %>
+</div>
+
+<style>
+  .post {
+    border: 1px solid #ccc;
+    margin: 10px 0;
+    padding: 10px;
+    width: fit-content;
+  }
+</style>

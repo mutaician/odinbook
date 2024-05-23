@@ -1,12 +1,8 @@
 
 <%= link_to "Create Post", new_post_path %>
 
-<%  @posts.each do |post| %>
-  <div class="post">
-    <p><%= post.content %></p>
-    <p>@<%= post.user.username %></p>
-  </div>
-<% end %>
+<h1>All Posts</h1>
+<%= render @posts %>
 
 
 <style>
