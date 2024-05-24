@@ -1,6 +1,25 @@
 <div class="post">
     <h4><%= post.content %></h4>
-    <p>@<%= link_to post.user.username, user_path(post.user) %></p>
+    <p><%= link_to "@#{post.user.username}", user_path(post.user) %></p>
+    <p>
+    <% if Like.exists?(user_id: current_user.id, post_id: post.id) %>
+        <%= link_to "Unlike", like_path(current_user.likes.find_by(post_id: post.id)), data: { turbo_method: :delete } %>
+    <% else %>
+        <%= link_to "Like", likes_path(post_id: post.id), data: { turbo_method: :post } %>
+    <% end %>
+    <%= post.likes.count %>
+    </p>
+    <%# display comments %>
+    <div class="comments">
+        <% post.comments.each do |comment| %>
+            <p><%= comment.content %> - <%= link_to "@#{comment.user.username}", user_path(comment.user) %></p>
+        <% end %>
+    </div>
+    <%# form to create new comment %>
+    <%= form_with model: [post, Comment.new], local: true do |form| %>
+        <%= form.text_field :content, placeholder: "Add a comment..." %>
+        <%= form.submit "Post Comment" %>
+    <% end %>
     <% if current_user == post.user %>
         <%= link_to "Edit", edit_post_path(post) %>
         <%= link_to "Delete", post, data: { confirm: "Are you sure?", turbo_method: :delete } %>

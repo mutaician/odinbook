@@ -1,5 +1,6 @@
 <div class="profile">
     <h1><%= @user.username %>'s Profile</h1>
+    <%= avatar_for @user %>
     <p><strong>Email:</strong> <%= @user.email %></p>
     <p><strong>Posts:</strong> <%= @user.posts.count %></p>
     <p><strong>Followers:</strong> <%= @user.followers.count %></p>

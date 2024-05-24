@@ -24,4 +24,12 @@ class User < ApplicationRecord
   def following?(other_user)
     following.include?(other_user)
   end
+
+  # Likes
+  has_many :likes, dependent: :destroy
+  has_many :liked_posts, through: :likes, source: :post
+
+  # Comments
+  has_many :comments, dependent: :destroy
+
 end
