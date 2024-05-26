@@ -1,22 +1,4 @@
 
-<h2>Create Post</h2>
+<h2 class="cp">Create Post</h2>
 
-<%= form_with model: @post do |form| %>
-    <% if @post.errors.any? %>
-        <div id="error_explanation">
-            <h4><%= pluralize(@post.errors.count, "error") %> prohibited this post from being saved:</h4>
-            <ul>
-                <% @post.errors.full_messages.each do |message| %>
-                    <li><%= message %></li>
-                <% end %>
-            </ul>
-        </div>
-    <% end %>
-    <div class="field">
-        <%= form.label :content %><br>
-        <%= form.text_field :content %>
-    </div>
-    <div class="actions">
-        <%= form.submit %>
-    </div>
-<% end %>
+<%= render 'form' %>

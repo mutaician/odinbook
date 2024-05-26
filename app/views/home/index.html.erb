@@ -1,5 +1,11 @@
 
-<%= link_to "Create Post", new_post_path %>
+<div class="home-content">
+    <%= link_to "Create Post", new_post_path, class: "newpost" %>
 
-<h1>All Posts</h1>
-<%= render @posts %>
+    <h1>All Posts</h1>
+    <% @posts.each do |post| %>
+        <div class="">
+            <%= render post %>
+        </div>
+    <% end %>
+</div>
